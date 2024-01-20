@@ -29,6 +29,8 @@ pipeline {
 
                     // Push the Docker image to Docker Hub
                     sh "docker push sangamesh8055/demo:${BUILD_NUMBER}"
+                    sh "docker ps -a"
+                    sh "docker images"
                 }
             }
         }
