@@ -13,7 +13,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
+      - name: python
+        image: sangaesh8055/python:latest
         ports:
         - containerPort: 80
