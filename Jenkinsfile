@@ -45,6 +45,9 @@ pipeline {
                     ${KUBECONFIG_CONTENT}
                     EOF
                     export KUBECONFIG=kubeconfig.yaml
+
+                    echo "=====Current Context====="
+                    kubectl config current-context
                     helm upgrade --install sang ./demo \\
                     --set image.repository=${dockerRepo} \\
                     --set image.tag=${BUILD_NUMBER}
