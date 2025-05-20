@@ -10,7 +10,7 @@ pipeline {
         stage(BUILD) {
             steps {
                 script {
-                    sh 'docker build -t sangamesh8055/demo:${BUILD_NUMBER} .'
+                    sh 'docker build -t sangaesh8055/demo:${BUILD_NUMBER} .'
                 }
             }
         } 
@@ -24,7 +24,7 @@ pipeline {
                     }
 
                     // Push the Docker image to Docker Hub
-                    sh "docker push sangamesh8055/demo:${BUILD_NUMBER}"
+                    sh "docker push sangaesh8055/demo:${BUILD_NUMBER}"
                     sh "docker ps -a"
                     sh "docker images"
                 }
