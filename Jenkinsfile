@@ -38,7 +38,11 @@ pipeline {
         stage('Helm Deploy') {
             steps {
                 script {
+                    withCredentials([string(credentialsId: 'kubeconfig-text', variable: 'KUBECONFIG_CONTENT')]) {
+                        
                     sh """
+                    echo "${KUBECONFIG_CONTENT}" > kubeconfig.yaml
+                    export KUBECONFIG=kubeconfig.yaml
                     helm upgrade --install sang ./demo \\
                     --set image.repository=${dockerRepo} \\
                     --set image.tag=${BUILD_NUMBER}
