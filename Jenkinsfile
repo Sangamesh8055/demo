@@ -48,6 +48,10 @@ pipeline {
 
                     echo "=====Current Context====="
                     kubectl config current-context
+                    echo "=="
+                    kubectl config view --minify --output 'jsonpath={..namespace}'
+                    echo "=="
+                    kubectl get all
                     helm upgrade --install sang ./demo \\
                     --set image.repository=${dockerRepo} \\
                     --set image.tag=${BUILD_NUMBER}
