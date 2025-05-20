@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    
-    environment {
-        registryCredential = 'docker'
-    }
 
     stages {
         stage('GIT SCM') {
