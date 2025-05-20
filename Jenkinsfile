@@ -41,7 +41,9 @@ pipeline {
                     withCredentials([string(credentialsId: 'kubeconfig-text', variable: 'KUBECONFIG_CONTENT')]) {
                         
                     sh """
-                    echo "${KUBECONFIG_CONTENT}" > kubeconfig.yaml
+                    cat <<EOF > kubeconfig.yaml
+                    ${KUBECONFIG_CONTENT}
+                    EOF
                     export KUBECONFIG=kubeconfig.yaml
                     helm upgrade --install sang ./demo \\
                     --set image.repository=${dockerRepo} \\
