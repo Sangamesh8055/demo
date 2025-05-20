@@ -43,6 +43,9 @@ pipeline {
                     --set image.repository=${dockerRepo} \\
                     --set image.tag=${BUILD_NUMBER}
                     """
+                }
+            }
+        }
 
 }
 }
