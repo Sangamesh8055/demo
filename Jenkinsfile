@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        dockerRepo = 'sangaesh8055/demo'
+    }
+
     stages {
         stage('GIT SCM') {
             steps {
@@ -30,6 +34,15 @@ pipeline {
                 }
             }
         }
+
+        stage('Helm Deploy') {
+            steps {
+                script {
+                    sh """
+                    helm upgrade --install sang ./demo \\
+                    --set image.repository=${dockerRepo} \\
+                    --set image.tag=${BUILD_NUMBER}
+                    """
 
 }
 }
